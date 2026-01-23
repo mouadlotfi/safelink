@@ -1,0 +1,19 @@
+{
+  "name": "Safelink",
+  "short_name": "Safelink",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "description": "Remove trackers from URLs and get alternative links for supported websites.",
+  "theme_color": "#050816",
+  "background_color": "#050816",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
