@@ -1,0 +1,1027 @@
+{
+  "invidious": {
+    "clearnet": [
+      "https://inv.nadeko.net",
+      "https://invidious.nerdvpn.de",
+      "https://invidious.f5.si",
+      "https://yewtu.be"
+    ],
+    "tor": [
+      "http://inv.nadekonw7plitnjuawu6ytjsl7jlglk2t6pyq6eftptmiv3dvqndwvyd.onion"
+    ],
+    "i2p": [
+      "http://nadekoohummkxncchcsylr3eku36ze4waq4kdrhcqupckc3pe5qq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "materialious": {
+    "clearnet": [
+      "https://app.materialio.us"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "piped": {
+    "clearnet": [],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "pipedMaterial": {
+    "clearnet": [
+      "https://piped-material.xn--17b.net",
+      "https://piped-material.ftp.sh",
+      "https://eds-v2.piped.xn--17b.net"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "cloudtube": {
+    "clearnet": [
+      "https://tube.cadence.moe",
+      "https://tube.boritsch.de"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "proxiTok": {
+    "clearnet": [
+      "https://proxitok.pabloferreiro.es",
+      "https://proxitok.pussthecat.org",
+      "https://tok.habedieeh.re",
+      "https://proxitok.privacydev.net",
+      "https://tok.artemislena.eu",
+      "https://tok.adminforge.de",
+      "https://cringe.whatever.social",
+      "https://proxitok.lunar.icu",
+      "https://proxitok.privacy.com.de",
+      "https://cringe.seitan-ayoub.lol",
+      "https://tt.opnxng.com",
+      "https://tiktok.wpme.pl",
+      "https://proxitok.r4fo.com",
+      "https://proxitok.belloworld.it"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "send": {
+    "clearnet": [
+      "https://icons.duckduckgo.com/ip3/send.vis.ee.ico\" height=\"16\"> https://send.vis.ee",
+      "https://icons.duckduckgo.com/ip3/send.mni.li.ico\" height=\"16\"> https://send.mni.li",
+      "https://icons.duckduckgo.com/ip3/send.monks.tools.ico\" height=\"16\"> https://send.monks.tools",
+      "https://icons.duckduckgo.com/ip3/send.boblorange.net.ico\" height=\"16\"> https://send.boblorange.net",
+      "https://icons.duckduckgo.com/ip3/send.aurorabilisim.com.ico\" height=\"16\"> https://send.aurorabilisim.com",
+      "https://icons.duckduckgo.com/ip3/send.artemislena.eu.ico\" height=\"16\"> https://send.artemislena.eu",
+      "https://icons.duckduckgo.com/ip3/fileupload.ggc-project.de.ico\" height=\"16\"> https://fileupload.ggc-project.de",
+      "https://icons.duckduckgo.com/ip3/drop.chapril.org.ico\" height=\"16\"> https://drop.chapril.org",
+      "https://icons.duckduckgo.com/ip3/send.jeugdhulp.be.ico\" height=\"16\"> https://send.jeugdhulp.be",
+      "https://icons.duckduckgo.com/ip3/files.psu.ru.ico\" height=\"16\"> https://files.psu.ru",
+      "https://icons.duckduckgo.com/ip3/send.datenpost.app.ico\" height=\"16\"> https://send.datenpost.app",
+      "https://icons.duckduckgo.com/ip3/s.opnxng.com.ico\" height=\"16\"> https://s.opnxng.com",
+      "https://icons.duckduckgo.com/ip3/send.cyberjake.xyz.ico\" height=\"16\"> https://send.cyberjake.xyz",
+      "https://icons.duckduckgo.com/ip3/send.kokomo.cloud.ico\" height=\"16\"> https://send.kokomo.cloud",
+      "https://icons.duckduckgo.com/ip3/send.adminforge.de.ico\" height=\"16\"> https://send.adminforge.de",
+      "https://icons.duckduckgo.com/ip3/send.turingpoint.de.ico\" height=\"16\"> https://send.turingpoint.de",
+      "https://icons.duckduckgo.com/ip3/send.aslaets.be.ico\" height=\"16\"> https://send.aslaets.be",
+      "https://icons.duckduckgo.com/ip3/send.codespace.cz.ico\" height=\"16\"> https://send.codespace.cz",
+      "https://icons.duckduckgo.com/ip3/upload.nolog.cz.ico\" height=\"16\"> https://upload.nolog.cz",
+      "https://icons.duckduckgo.com/ip3/ch.skysend.ch.ico\" height=\"16\"> https://ch.skysend.ch",
+      "https://icons.duckduckgo.com/ip3/de.skysend.ch.ico\" height=\"16\"> https://de.skysend.ch",
+      "https://icons.duckduckgo.com/ip3/allthefiles.net.ico\" height=\"16\"> https://allthefiles.net",
+      "https://icons.duckduckgo.com/ip3/send.canine.tools.ico\" height=\"16\"> https://send.canine.tools",
+      "https://icons.duckduckgo.com/ip3/secureshar.ing.ico\" height=\"16\"> https://secureshar.ing",
+      "https://icons.duckduckgo.com/ip3/send.aezafiles.net.ico\" height=\"16\"> https://send.aezafiles.net",
+      "https://icons.duckduckgo.com/ip3/send.sdad.pro.ico\" height=\"16\"> https://send.sdad.pro",
+      "https://icons.duckduckgo.com/ip3/send.skylerszijjarto.com.ico\" height=\"16\"> https://send.skylerszijjarto.com",
+      "https://icons.duckduckgo.com/ip3/send.richy.sh.ico\" height=\"16\"> https://send.richy.sh",
+      "https://icons.duckduckgo.com/ip3/send.majoenell.com.ico\" height=\"16\"> https://send.majoenell.com",
+      "https://icons.duckduckgo.com/ip3/send.nog.community.ico\" height=\"16\"> https://send.nog.community"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "nitter": {
+    "clearnet": [
+      "https://xcancel.com",
+      "https://nitter.poast.org",
+      "https://nitter.privacyredirect.com",
+      "https://lightbrd.com",
+      "https://nitter.space",
+      "https://nitter.tiekoetter.com",
+      "https://nuku.trabun.org",
+      "https://nitter.kuuro.net",
+      "https://worldcorrespondents.com"
+    ],
+    "tor": [
+      "http://nitter.coffee2m3bjsrrqqycx6ghkxrnejl2q6nl7pjw2j4clchjj6uk5zozad.onion",
+      "http://nitter.kuuro5abqix6tfku77wj32srkicgqh3f7ro77ctpda7ub7a7mlv4jsid.onion"
+    ],
+    "i2p": [],
+    "loki": []
+  },
+  "redlib": {
+    "clearnet": [
+      "https://l.opnxng.com",
+      "https://redlib.catsarch.com",
+      "https://redlib.perennialte.ch",
+      "https://libreddit.privacydev.net",
+      "https://redlib.ducks.party",
+      "https://redlib.privacyredirect.com",
+      "https://redlib.baczek.me",
+      "https://redlib.4o1x5.dev",
+      "https://redlib.frontendfriendly.xyz",
+      "https://redlib.reallyaweso.me",
+      "https://reddit.adminforge.de",
+      "https://lr.ptr.moe",
+      "https://redlib.orangenet.cc",
+      "https://redlib.privadency.com"
+    ],
+    "tor": [
+      "http://red.lpoaj7z2zkajuhgnlltpeqh3zyq7wk2iyeggqaduhgxhyajtdt2j7wad.onion"
+    ],
+    "i2p": [],
+    "loki": []
+  },
+  "scribe": {
+    "clearnet": [
+      "https://scribe.rip",
+      "https://scribe.nixnet.services",
+      "https://scribe.citizen4.eu",
+      "https://scribe.bus-hit.me",
+      "https://scribe.froth.zone",
+      "https://scribe.privacydev.net",
+      "https://scribe.rawbit.ninja",
+      "https://sc.vern.cc",
+      "https://m.opnxng.com",
+      "https://scribe.manasiwibi.com",
+      "https://scribe.r4fo.com",
+      "https://scribe.privacyredirect.com"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "quetre": {
+    "clearnet": [
+      "https://quetre.iket.me",
+      "https://qr.vern.cc",
+      "https://quetre.pussthecat.org",
+      "https://quetre.tokhmi.xyz",
+      "https://quetre.privacydev.net",
+      "https://ask.habedieeh.re",
+      "https://quetre.blackdrgn.nl",
+      "https://quetre.lunar.icu",
+      "https://q.opnxng.com",
+      "https://ask.sudovanilla.org",
+      "https://quetre.drgns.space",
+      "https://quetre.r4fo.com",
+      "https://quetre.ducks.party",
+      "https://quetre.nadeko.net",
+      "https://quetre.private.coffee",
+      "https://quetre.canine.tools",
+      "https://qt.bloat.cat",
+      "https://quetre.jeikobu.net",
+      "https://quetre.franklyflawless.org",
+      "https://q.307200.xyz",
+      "https://quora.nerdvpn.de",
+      "https://quetre.privacyredirect.com"
+    ],
+    "tor": [
+      "http://qr.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion",
+      "http://quetre.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion",
+      "http://ask.habeehrhadazsw3izbrbilqajalfyqqln54mrja3iwpqxgcuxnus7eid.onion",
+      "http://quetre.nadekobxalvyqrhvp3m2atfgdmzp5vcwdmu3wo4htecwjkodancfmgid.onion",
+      "http://quetre.coffee2m3bjsrrqqycx6ghkxrnejl2q6nl7pjw2j4clchjj6uk5zozad.onion"
+    ],
+    "i2p": [
+      "http://vernnflenvsqccuanaun7yydnmturi4jkyxlyzhn6ultpje66c3q.b32.i2p"
+    ],
+    "loki": []
+  },
+  "libremdb": {
+    "clearnet": [
+      "https://libremdb.iket.me",
+      "https://libremdb.pussthecat.org",
+      "https://ld.vern.cc",
+      "https://binge.whatever.social",
+      "https://libremdb.lunar.icu",
+      "https://libremdb.jeikobu.net",
+      "https://lmdb.hostux.net",
+      "https://binge.whateveritworks.org",
+      "https://libremdb.nerdyfam.tech",
+      "https://libremdb.tux.pizza",
+      "https://libremdb.frontendfriendly.xyz",
+      "https://d.opnxng.com",
+      "https://libremdb.catsarch.com",
+      "https://libremdb.r4fo.com",
+      "https://libremdb.privacydev.net",
+      "https://libremdb.ducks.party",
+      "https://lmdb.ngn.tf",
+      "https://lmdb.bloat.cat",
+      "https://libremdb.darkness.services",
+      "https://libremdb.hyperreal.coffee",
+      "https://ld.ca.zorby.top",
+      "https://imdb.nerdvpn.de",
+      "https://libremdb.canine.tools",
+      "https://libremdb-fly.fly.dev",
+      "https://libremdb.franklyflawless.org"
+    ],
+    "tor": [
+      "http://ld.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion",
+      "http://libremdb.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion",
+      "http://libremdb.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion",
+      "http://libremdb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion",
+      "http://q3hetdcyyy572xznqmsledzlbv77moycoqs6ptehpp5vsmx4dtcuqeqd.onion"
+    ],
+    "i2p": [
+      "http://vernz3ubrntql4wrgyrssd6u3qzi36zrhz2agbo6vibzbs5olk2q.b32.i2p",
+      "http://qjlgasoy3nxepgzntucmcnb6pryqxakwdu7sxvqzi7spdfootryq.b32.i2p",
+      "http://5j37qusybvyhecljn4hr5i4chifdlfqfkfveythzpzyfxiibt7cq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "simplyTranslate": {
+    "clearnet": [
+      "https://simplytranslate.org",
+      "https://st.adast.dk",
+      "https://simplytranslate.ducks.party",
+      "https://simplytranslate.aketawi.space"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "lingva": {
+    "clearnet": [
+      "https://lingva.ml",
+      "https://translate.igna.wtf",
+      "https://translate.plausibility.cloud",
+      "https://lingva.lunar.icu",
+      "https://translate.projectsegfau.lt",
+      "https://lingva.garudalinux.org",
+      "https://translate.dr460nf1r3.org",
+      "https://translate.jae.fi"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "libreTranslate": {
+    "clearnet": [],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "searxng": {
+    "clearnet": [
+      "https://baresearch.org",
+      "https://copp.gg",
+      "https://darmarit.org/searx",
+      "https://etsi.me",
+      "https://fairsuch.net",
+      "https://find.xenorio.xyz",
+      "https://kantan.cat",
+      "https://metacat.online",
+      "https://northboot.xyz",
+      "https://o5.gg",
+      "https://ooglester.com",
+      "https://opnxng.com",
+      "https://paulgo.io",
+      "https://search.2b9t.xyz",
+      "https://search.anoni.net",
+      "https://search.bladerunn.in",
+      "https://search.buddyverse.net",
+      "https://search.catboy.house",
+      "https://search.charliewhiskey.net",
+      "https://search.ethibox.fr",
+      "https://search.femboy.ad",
+      "https://search.hbubli.cc",
+      "https://search.iguru.gr",
+      "https://search.im-in.space",
+      "https://search.indst.eu",
+      "https://search.inetol.net",
+      "https://search.internetsucks.net",
+      "https://search.ipsys.bf",
+      "https://search.ipv6s.net",
+      "https://search.leptons.xyz",
+      "https://search.mdosch.de",
+      "https://search.mycotrip.tech",
+      "https://search.nerdvpn.de",
+      "https://search.oh64.moe",
+      "https://search.ononoki.org",
+      "https://search.perditum.com",
+      "https://search.pollorebozado.com",
+      "https://search.privacyredirect.com",
+      "https://search.rhscz.eu",
+      "https://search.rowie.at",
+      "https://search.sapti.me",
+      "https://search.undertale.uk",
+      "https://search.url4irl.com",
+      "https://searx.ankha.ac",
+      "https://searx.dresden.network",
+      "https://searx.foobar.vip",
+      "https://searx.foss.family",
+      "https://searx.juancord.xyz",
+      "https://searx.lunar.icu",
+      "https://searx.mbuf.net",
+      "https://searx.mxchange.org",
+      "https://searx.namejeff.xyz",
+      "https://searx.oloke.xyz",
+      "https://searx.ox2.fr",
+      "https://searx.party",
+      "https://searx.perennialte.ch",
+      "https://searx.ppeb.me",
+      "https://searx.rhscz.eu",
+      "https://searx.ro",
+      "https://searx.sev.monster",
+      "https://searx.stream",
+      "https://searx.tiekoetter.com",
+      "https://searx.tuxcloud.net",
+      "https://searx.zhenyapav.com",
+      "https://searxng.canine.tools",
+      "https://searxng.deliberate.world",
+      "https://searxng.f24o.zip",
+      "https://searxng.hweeren.com",
+      "https://searxng.mcgee.red",
+      "https://searxng.shreven.org",
+      "https://searxng.site",
+      "https://searxng.website",
+      "https://seek.fyi",
+      "https://sx.catgirl.cloud",
+      "https://www.gruble.de"
+    ],
+    "tor": [
+      "http://4n53nafyi77iplnbrpmxnp3x4exbswwxigujaxy3b37fvr7bvlopxeyd.onion",
+      "http://search.anoninetru5tflukgfaehun7q6khowgmymcff3gtk5oyesqazhmfxtyd.onion",
+      "http://whereissky27lxfdrs7ct7a5ievor3tl67qi77rv5luga7wod5jf2mad.onion",
+      "http://nerdvpn4iln4didgzcw7pgvjv4p3pwn3e3dq732oxwidfv6bacnyuvad.onion",
+      "http://psxngvx3edy7lvaaeurdpfccketrmpwknm6sah2qz53qcskxd272tiqd.onion",
+      "http://ls67zxncmcqgn2vg74ckcwxgu5p3e5mf2khues3egkumhcqtbsg4kqyd.onion",
+      "http://qmha5d7v5lpck2xcwiwmpejw6wf5l5uump7tqisfk5ddzseng47eshyd.onion",
+      "http://searxwcao6avdvuaspdrjheiwrcey2zvxq3dj52gruo3oaqcr2ddlyqd.onion",
+      "http://searxokthnxmo7ndis35jpts2tawcwvbovuy47qtavwo7oq4jgcm5gqd.onion",
+      "http://ieqzkvy4bf3xi4bzsfzfax42t4iuqcbqn6oah4uwrm4ip354gavsviad.onion",
+      "http://searx3aolosaf3urwnhpynlhuokqsgz47si4pzz5hvb7uuzyjncl2tid.onion",
+      "http://searxng.f24ozipdw2v3qudr5udqhz5sme2im4ytyufb25liyaba7zjx7ui6kxqd.onion"
+    ],
+    "i2p": [],
+    "loki": []
+  },
+  "searx": {
+    "clearnet": [
+      "https://search.stinpriza.org",
+      "https://searx.dresden.network",
+      "https://searx.gnu.style",
+      "https://searx.mastodontech.de",
+      "https://searx.mxchange.org",
+      "https://searx.nixnet.services",
+      "https://searx.roflcopter.fr",
+      "https://searx.ru",
+      "https://searx.zapashcanon.fr"
+    ],
+    "tor": [
+      "http://z5vawdol25vrmorm4yydmohsd4u6rdoj2sylvoi3e3nqvxkvpqul7bqd.onion"
+    ],
+    "i2p": [],
+    "loki": []
+  },
+  "whoogle": {
+    "clearnet": [
+      "https://search.garudalinux.org",
+      "https://whoogle.privacydev.net",
+      "https://whoogle.lunar.icu"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "rimgo": {
+    "clearnet": [
+      "https://rimgo.pussthecat.org",
+      "https://rimgo.totaldarkness.net",
+      "https://rimgo.bus-hit.me",
+      "https://imgur.artemislena.eu",
+      "https://imgur.010032.xyz",
+      "https://rimgo.hostux.net",
+      "https://ri.nadeko.net",
+      "https://rimgo.lunar.icu",
+      "https://rimgo.projectsegfau.lt",
+      "https://rimgo.eu.projectsegfau.lt",
+      "https://rimgo.us.projectsegfau.lt",
+      "https://rimgo.in.projectsegfau.lt",
+      "https://rimgo.fascinated.cc",
+      "https://rimgo.nohost.network",
+      "https://rimgo.catsarch.com",
+      "https://rimgo.frontendfriendly.xyz",
+      "https://rimgo.drgns.space",
+      "https://rimgo.quantenzitrone.eu",
+      "https://rimgo.frylo.net",
+      "https://rimgo.ducks.party",
+      "https://rimgo.perennialte.ch",
+      "https://rmgur.com",
+      "https://rimgo.privacyredirect.com",
+      "https://rimgo.reallyaweso.me",
+      "https://rimgo.bloat.cat",
+      "https://rimgo.darkness.services",
+      "https://rimgo.4o1x5.dev",
+      "https://rimgo.aketawi.space",
+      "https://imgur.nerdvpn.de",
+      "https://rimgo.thebunny.zone",
+      "https://rimgo.canine.tools",
+      "https://rimgo.astrial.org",
+      "https://imgur.fsky.io",
+      "https://r.opnxng.com",
+      "https://imgur.sudovanilla.org",
+      "https://i.datuan.dev",
+      "https://rg.kuuro.net",
+      "https://rimgo.proxik.cloud"
+    ],
+    "tor": [
+      "http://rimgo.micohauwkjbyw5meacrb4ipicwvwg4xtzl7y7viv53kig2mdcsvwkyyd.onion",
+      "http://rimgo.nadekonw7plitnjuawu6ytjsl7jlglk2t6pyq6eftptmiv3dvqndwvyd.onion",
+      "http://rimgo.pjsfkvpxlinjamtawaksbnnaqs2fc2mtvmozrzckxh7f3kis6yea25ad.onion",
+      "http://rimgo.skunky7dhv7nohsoalpwe3sxfz3fbkad7r3wk632riye25vqm3meqead.onion",
+      "http://rimgo.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion",
+      "http://rimgo.bunny5exbgbp4sqe2h2rfq2brgrx3dhohdweonepzwfgumfyygb35wyd.onion",
+      "http://imgurolljpstjc2w5gb6lgcxhvdsndmurvbbkvpv6s5pif3kkhe5ptad.onion",
+      "http://rg.kuuro5abqix6tfku77wj32srkicgqh3f7ro77ctpda7ub7a7mlv4jsid.onion"
+    ]
+  },
+  "pixivFe": {
+    "clearnet": [
+      "https://pixivfe.exozy.me",
+      "https://pixivfe.drgns.space",
+      "https://pixivfe.ducks.party",
+      "https://pixiv.perennialte.ch",
+      "https://pixivfe.darkness.services",
+      "https://pixivfe.thebunny.zone"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "safetwitch": {
+    "clearnet": [
+      "https://safetwitch.drgns.space",
+      "https://ttv.vern.cc",
+      "https://twitch.sudovanilla.org",
+      "https://safetwitch.ducks.party",
+      "https://safetwitch.nogafam.fr",
+      "https://safetwitch.privacyredirect.com",
+      "https://safetwitch.darkness.services",
+      "https://safetwitch.4o1x5.dev",
+      "https://safetwitch.adminforge.de",
+      "https://twitch.blitzw.in",
+      "https://safetwitch.canine.tools",
+      "https://safetwitch.privadency.com"
+    ],
+    "tor": [
+      "http://ttv.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"
+    ],
+    "i2p": [
+      "http://vernz43kgqiy3nzzof3nejeo4hh3bjgyqi3b3hijchilv7noqtrq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "hyperpipe": {
+    "clearnet": [
+      "https://hyperpipe.surge.sh",
+      "https://music.adminforge.de",
+      "https://music.pfcd.me",
+      "https://hyperpipe.frontendfriendly.xyz",
+      "https://hyperpipe.drgns.space",
+      "https://hyperpipe.projectsegfau.lt",
+      "https://hp.ggtyler.dev",
+      "https://hyperpipe.lunar.icu",
+      "https://hp.iqbalrifai.eu.org",
+      "https://hp.ngn.tf",
+      "https://hyperpipe.ducks.party",
+      "https://hyperpipe.darkness.services"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "osm": {
+    "clearnet": [
+      "https://www.openstreetmap.org"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "breezeWiki": {
+    "clearnet": [
+      "https://breezewiki.com",
+      "https://antifandom.com",
+      "https://breezewiki.pussthecat.org",
+      "https://bw.hamstro.dev",
+      "https://bw.projectsegfau.lt",
+      "https://breeze.hostux.net",
+      "https://bw.artemislena.eu",
+      "https://nerd.whatever.social",
+      "https://breezewiki.frontendfriendly.xyz",
+      "https://breeze.nohost.network",
+      "https://breeze.whateveritworks.org",
+      "https://z.opnxng.com",
+      "https://breezewiki.hyperreal.coffee",
+      "https://breezewiki.catsarch.com",
+      "https://breeze.mint.lgbt",
+      "https://breezewiki.woodland.cafe",
+      "https://breezewiki.nadeko.net",
+      "https://fandom.reallyaweso.me",
+      "https://breezewiki.4o1x5.dev",
+      "https://breezewiki.r4fo.com",
+      "https://breezewiki.private.coffee",
+      "https://fan.blitzw.in"
+    ],
+    "tor": [
+      "http://bw.skunky7dhv7nohsoalpwe3sxfz3fbkad7r3wk632riye25vqm3meqead.onion",
+      "http://breezewiki.pjsfkvpxlinjamtawaksbnnaqs2fc2mtvmozrzckxh7f3kis6yea25ad.onion",
+      "http://breezewiki.nadekonfkhwlxwwk4ycbvq42zvcjmvo5iakl4tajojjwxd4a5dcetuyd.onion",
+      "http://breezewiki.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion",
+      "http://breezewiki.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion",
+      "http://breezewiki.coffee2m3bjsrrqqycx6ghkxrnejl2q6nl7pjw2j4clchjj6uk5zozad.onion"
+    ],
+    "i2p": [],
+    "loki": []
+  },
+  "binternet": {
+    "clearnet": [
+      "https://binternet.revvy.de",
+      "https://binternet.darkness.services",
+      "https://bn.bloat.cat",
+      "https://bn.opnxng.com",
+      "https://binternet.ducks.party",
+      "https://binternet.4o1x5.dev",
+      "https://binternet.privacyredirect.com",
+      "https://binternet.lunar.icu",
+      "https://pin.blitzw.in",
+      "https://binternet.canine.tools",
+      "https://bn.kuuro.net",
+      "https://binternet.privadency.com"
+    ],
+    "tor": [
+      "http://binternet.revvybrr6pvbx4n3j4475h4ghw4elqr4t5xo2vtd3gfpu2nrsnhh57id.onion",
+      "http://binternet.darknessrdor43qkl2ngwitj72zdavfz2cead4t5ed72bybgauww5lyd.onion"
+    ],
+    "i2p": [
+      "http://revznkqdwy7nmlzql66x226g3qnapiooss3rg2uajbj4rypxjnba.b32.i2p"
+    ],
+    "loki": []
+  },
+  "privateBin": {
+    "clearnet": [
+      "https://privatebin.net",
+      "https://privatebin.app",
+      "https://ots.kocsar.com",
+      "https://p.kll.li",
+      "https://paste.hostux.net",
+      "https://paste.trove.cz",
+      "https://03c.de",
+      "https://enjoys.rocks",
+      "https://bin.cafeo.re",
+      "https://bin.bloat.cat",
+      "https://privatebin.cz",
+      "https://paste.waays.fr",
+      "https://privatebin.arch-linux.cz",
+      "https://0g.gg",
+      "https://p.darklab.sh",
+      "https://pb.flossboxin.org.in",
+      "https://secret.hummel-web.at",
+      "https://bin.uhl.cloud",
+      "https://paste.nerdvpn.de",
+      "https://zerobin.thican.net",
+      "https://extrait.facil.services",
+      "https://privatebin.io",
+      "https://paste.aryu.de",
+      "https://bin.salvatorenoschese.it",
+      "https://paste.07f.de",
+      "https://paste.skynetcloud.site",
+      "https://privatebin.at",
+      "https://secrets.l25.cloud",
+      "https://paste.worf.win",
+      "https://pb.jaska.cc",
+      "https://p.vinci-concessions.com",
+      "https://paste.coalserver.de",
+      "https://paste.3server.de",
+      "https://paste.aminulloh.id",
+      "https://anonpaste.org",
+      "https://privatebin.z1337.de",
+      "https://0.0g.gg",
+      "https://notabin.com",
+      "https://encryp.ch/note",
+      "https://privatebin.unige.ch",
+      "https://paste.tuxcloud.net",
+      "https://paste.encrypt.co.il",
+      "https://privatebin.luckvintage.com",
+      "https://privatebin.oxidizer.de",
+      "https://bin.c17.dev",
+      "https://paste.plus",
+      "https://cryptostorm.is/paste",
+      "https://bonus01.hwb0307.com",
+      "https://pb.blackvoid.club",
+      "https://secrets.true.nl",
+      "https://notebin.de",
+      "https://paste.tildeverse.org",
+      "https://bin.0xfc.de",
+      "https://paste.devsite.pl",
+      "https://pastebin.grey.pw",
+      "https://p.blueridgedebate.com"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "neuters": {
+    "clearnet": [
+      "https://neuters.de",
+      "https://nu.vern.cc"
+    ],
+    "tor": [
+      "http://nu.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"
+    ],
+    "i2p": [
+      "http://vernkhr6duyh3tvrh7erkrwpwbqpztulwizzr2ma4ivvmr3xbdga.b32.i2p"
+    ],
+    "loki": []
+  },
+  "ruralDictionary": {
+    "clearnet": [
+      "https://rd.vern.cc",
+      "https://rd.bloat.cat",
+      "https://rd.thirtysix.pw",
+      "https://rd.cmc.pub",
+      "https://ruraldictionary.franklyflawless.org"
+    ],
+    "tor": [
+      "http://rd.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"
+    ],
+    "i2p": [
+      "http://vern5cxiaufqvhv4hu5ypkvw3tiwvuinae4evdbqzrioql6s2sha.b32.i2p"
+    ],
+    "loki": []
+  },
+  "libMedium": {
+    "clearnet": [
+      "https://libmedium.batsense.net",
+      "https://md.vern.cc",
+      "https://medium.hostux.net",
+      "https://r.sudovanilla.org",
+      "https://libmedium.ducks.party"
+    ],
+    "tor": [
+      "http://md.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"
+    ],
+    "i2p": [
+      "http://vernaqj2qr2pijpgvf3od6ssc3ulz3nv52gwr3hba5l6humuzmgq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "dumb": {
+    "clearnet": [
+      "https://dm.vern.cc",
+      "https://sing.whatever.social",
+      "https://dumb.lunar.icu",
+      "https://dumb.privacydev.net",
+      "https://dumb.ducks.party",
+      "https://dumb.privacyfucking.rocks",
+      "https://dumb.hyperreal.coffee",
+      "https://dumb.bloat.cat",
+      "https://dumb.jeikobu.net",
+      "https://dumb.canine.tools",
+      "https://lyr.dc09.ru",
+      "https://db.kuuro.net"
+    ],
+    "tor": [
+      "http://dm.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion",
+      "http://dumb.g4c3eya4clenolymqbpgwz3q3tawoxw56yhzk4vugqrl6dtu3ejvhjid.onion",
+      "http://db.kuuro5abqix6tfku77wj32srkicgqh3f7ro77ctpda7ub7a7mlv4jsid.onion"
+    ],
+    "i2p": [
+      "http://vernxpcpqi2y4uhu7to4rnjmyjjgzh3x3qxyzpmkhykefchkmleq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "anonymousOverflow": {
+    "clearnet": [
+      "https://code.whatever.social",
+      "https://ao.vern.cc",
+      "https://overflow.smnz.de",
+      "https://overflow.lunar.icu",
+      "https://overflow.adminforge.de",
+      "https://overflow.hostux.net",
+      "https://overflow.projectsegfau.lt",
+      "https://code.xbdm.fun",
+      "https://overflow.fascinated.cc",
+      "https://ao.bloat.cat",
+      "https://anonoverflow.frontendfriendly.xyz",
+      "https://ao.owo.si",
+      "https://overflow.datura.network",
+      "https://overflow.freedit.eu",
+      "https://ao.rootdo.com",
+      "https://anonoverflow.hyperreal.coffee",
+      "https://o.sudovanilla.org",
+      "https://anonymousoverflow.privacyfucking.rocks",
+      "https://exchange.seitan-ayoub.lol",
+      "https://overflow.r4fo.com",
+      "https://overflow.ducks.party",
+      "https://ao.ngn.tf",
+      "https://overflow.snine.nl",
+      "https://anonymousoverflow.privacyredirect.com",
+      "https://soflow.nerdvpn.de",
+      "https://overflow.einfachzocken.eu",
+      "https://overflow.seasi.dev",
+      "https://anonymousoverflow.catsarch.com",
+      "https://overflow.darkness.services",
+      "https://anonflow.aketawi.space",
+      "https://ao.bunk.lol",
+      "https://o.iii.st",
+      "https://overflow.canine.tools"
+    ],
+    "tor": [
+      "http://ao.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion",
+      "http://overflow.pjsfkvpxlinjamtawaksbnnaqs2fc2mtvmozrzckxh7f3kis6yea25ad.onion",
+      "http://overflow.daturab6drmkhyeia4ch5gvfc2f3wgo6bhjrv3pz6n7kxmvoznlkq4yd.onion",
+      "http://ao.pk47sgwhncn5cgidm7bofngmh7lc7ukjdpk5bjwfemmyp27ovl25ikyd.onion",
+      "http://overflow.r4focoma7gu2zdwwcjjad47ysxt634lg73sxmdbkdozanwqslho5ohyd.onion",
+      "http://anonymousoverflow.catsarchywsyuss6jdxlypsw5dc7owd5u5tr6bujxb7o6xw2hipqehyd.onion",
+      "http://overflow.darknessrdor43qkl2ngwitj72zdavfz2cead4t5ed72bybgauww5lyd.onion",
+      "http://o.zx56doutynmbgezxtpccduajwcblzx7fgio2yuy57a3jingco2c6fvqd.onion"
+    ],
+    "i2p": [
+      "http://vernmzgraj6aaoafmehupvtkkynpaa67rxcdj2kinwiy6konn6rq.b32.i2p",
+      "http://ay7akchgdh76r4lc62hzd52z6xqoh67loototsetvqxo5o7ngo5q.b32.i2p",
+      "http://ocp7zhdsbl2mjabv5ma5jvbzg2dqzglieayjvyj4j2r7qvsqlboa.b32.i2p"
+    ]
+  },
+  "wikiless": {
+    "clearnet": [
+      "https://wiki.froth.zone",
+      "https://wikiless.northboot.xyz",
+      "https://wikiless.tiekoetter.com",
+      "https://wl.vern.cc",
+      "https://wikiless.rawbit.ninja",
+      "https://wikiless.funami.tech",
+      "https://wiki.adminforge.de",
+      "https://wiki.owo.si",
+      "https://w.sneed.network",
+      "https://wikiless.r4fo.com",
+      "https://wiki.seitan-ayoub.lol"
+    ],
+    "tor": [
+      "http://ybgg2evrcdz37y2qes23ff3wjqjdn33tthgoagi76vhxytu4mpxiz5qd.onion",
+      "http://tdx37ew3oke5rxn3yi5r5665ka7ozvehnd4xmnjxxdvqorias2nyl4qd.onion",
+      "http://wiki.pk47sgwhncn5cgidm7bofngmh7lc7ukjdpk5bjwfemmyp27ovl25ikyd.onion"
+    ],
+    "i2p": [
+      "http://wikiless.i2p",
+      "http://hflqp2ejxygpj6cdwo3ogfieqmxw3b56w7dblt7bor2ltwk6kcfa.b32.i2p",
+      "http://vernesciy2defjsputrjrv6pa5ll6qzrckfffi5lgkumstdojyga.b32.i2p"
+    ],
+    "loki": []
+  },
+  "biblioReads": {
+    "clearnet": [
+      "https://biblioreads.eu.org",
+      "https://biblioreads.vercel.app",
+      "https://biblioreads.mooo.com",
+      "https://bl.vern.cc",
+      "https://biblioreads.lunar.icu",
+      "https://read.whateveritworks.org",
+      "https://biblioreads.privacyfucking.rocks",
+      "https://read.seitan-ayoub.lol",
+      "https://read.freedit.eu",
+      "https://biblioreads.ducks.party",
+      "https://biblioreads.snine.nl",
+      "https://biblioreads.privacyredirect.com",
+      "https://reads.nezumi.party",
+      "https://br.bloat.cat",
+      "https://biblioreads.canine.tools",
+      "https://biblioreads.franklyflawless.org"
+    ],
+    "tor": [
+      "http://bl.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"
+    ],
+    "i2p": [
+      "http://vernapl3lpo3huqdx3pjzxqgdgavxjlmdskbvejh2gfqgmjuyvxq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "suds": {
+    "clearnet": [
+      "https://sd.vern.cc"
+    ],
+    "tor": [
+      "http://sd.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"
+    ],
+    "i2p": [
+      "http://vernrdigztvu3427stlditjofgkuoc3b7kbkxvlecaej5ufe4l5q.b32.i2p"
+    ],
+    "loki": []
+  },
+  "poke": {
+    "clearnet": [
+      "https://poketube.fun"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "gothub": {
+    "clearnet": [
+      "https://gothub.lunar.icu",
+      "https://g.opnxng.com",
+      "https://gh.owo.si",
+      "https://gothub.projectsegfau.lt",
+      "https://gothub.r4fo.com",
+      "https://gothub.dev.projectsegfau.lt",
+      "https://gh.phreedom.club",
+      "https://gothub.ducks.party"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "jitsi": {
+    "clearnet": [
+      "https://meet.jit.si",
+      "https://8x8.vc"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "tent": {
+    "clearnet": [
+      "https://bandcamp.lurkmore.com",
+      "https://tent.bloat.cat",
+      "https://tent.canine.tools",
+      "https://tent.deep-swarm.xyz",
+      "https://tent.lab8.cz",
+      "https://tent.nbh.ax",
+      "https://tent.private.coffee",
+      "https://tent.sny.sh",
+      "https://tn.dc09.ru",
+      "https://tn.maid.zone",
+      "https://tn.vern.cc"
+    ],
+    "tor": [
+      "http://tent.dswarmsikhttkg7jgsoyfiqpj3ighupfrvuz5ri3lu5q2dlqyrpgk7ad.onion",
+      "http://tn.maidzonekwrk4xbbmynqnprq2lu7picruncfscfwmyzbmec6naurhyqd.onion",
+      "http://tn.vernccvbvyi5qhfzyqengccj7lkove6bjot2xhh5kajhwvidqafczrad.onion"
+    ],
+    "i2p": [
+      "http://maidzong64yczoqm5wlg2hiodip6ktpldcfdvoxanqaxmonyim4q.b32.i2p",
+      "http://vernk23oml2talve3keetcqmjylmu7r7kdrcfciv36oxitgpos5a.b32.i2p"
+    ],
+    "loki": []
+  },
+  "laboratory": {
+    "clearnet": [],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "twineo": {
+    "clearnet": [
+      "https://twineo.exozy.me",
+      "https://twineo.drgns.space"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "priviblur": {
+    "clearnet": [
+      "https://pb.bloat.cat",
+      "https://tb.opnxng.com",
+      "https://priviblur.pussthecat.org",
+      "https://priviblur.thebunny.zone",
+      "https://priviblur.canine.tools",
+      "https://pb.cleberg.net",
+      "https://tumblr.nerdvpn.de",
+      "https://pb.proxik.cloud",
+      "https://priviblur.privadency.com"
+    ],
+    "tor": [
+      "http://priviblur.bunny5exbgbp4sqe2h2rfq2brgrx3dhohdweonepzwfgumfyygb35wyd.onion"
+    ],
+    "i2p": [],
+    "loki": []
+  },
+  "mozhi": {
+    "clearnet": [
+      "https://mozhi.aryak.me",
+      "https://translate.projectsegfau.lt",
+      "https://translate.nerdvpn.de",
+      "https://mozhi.ducks.party",
+      "https://mozhi.pussthecat.org",
+      "https://mozhi.adminforge.de",
+      "https://translate.privacyredirect.com",
+      "https://mozhi.canine.tools",
+      "https://mzh.dc09.ru",
+      "https://mozhi.franklyflawless.org"
+    ],
+    "tor": [
+      "http://mozhi.wsuno6lnjdcsiok5mrxvl6e2bdex7nhsqqav6ux7tkwrqiqnulejfbyd.onion",
+      "http://42i2bzogwkph3dvoo2bm6srskf7vvabsphw7uzftymbjjlzgfluhnmid.onion",
+      "http://3mu2almmcv7rd7wlwhmkbwqgttntgpqu3hdanutxbv2v72wzbxe5ixqd.onion"
+    ],
+    "i2p": [
+      "http://74lptlnvaukcjnmqefedgna35ahkqexqzq2qq3k7utc2ep4jotcq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "skunkyArt": {
+    "clearnet": [
+      "https://lost-skunk.cc/skunkyart",
+      "https://sa.orehus.club",
+      "https://skunky.bloat.cat",
+      "https://skunkyart.lumaeris.com",
+      "https://art.bloat.cat",
+      "https://sa.dc09.ru",
+      "https://da.opnxng.com"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "koub": {
+    "clearnet": [
+      "https://koub.bloat.cat",
+      "https://koub2.bloat.cat"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  },
+  "transLite": {
+    "clearnet": [
+      "https://tl.bloat.cat",
+      "https://tl2.bloat.cat",
+      "https://tl.dc09.ru",
+      "https://tl.maid.zone",
+      "https://translite.deep-swarm.xyz",
+      "http://t.opnxng.com",
+      "https://translate.linuxenby.is",
+      "https://translite.f24o.zip"
+    ],
+    "tor": [
+      "http://translite.dswarmsikhttkg7jgsoyfiqpj3ighupfrvuz5ri3lu5q2dlqyrpgk7ad.onion",
+      "http://translate.s3agyzjznitshmuousvbxg7246hokooypkmncycbfroih542egnwkhad.onion",
+      "http://translite.f24ozipdw2v3qudr5udqhz5sme2im4ytyufb25liyaba7zjx7ui6kxqd.onion"
+    ],
+    "i2p": [],
+    "loki": []
+  },
+  "soundcloak": {
+    "clearnet": [
+      "https://sc.maid.zone",
+      "https://sc.bloat.cat",
+      "https://sc.opnxng.com",
+      "https://sc2.bloat.cat",
+      "https://sc.tijn.dev",
+      "https://sc.kuuro.net",
+      "https://sc.perditum.com"
+    ],
+    "tor": [
+      "http://sc.maidzonekwrk4xbbmynqnprq2lu7picruncfscfwmyzbmec6naurhyqd.onion",
+      "http://sc.kuuro5abqix6tfku77wj32srkicgqh3f7ro77ctpda7ub7a7mlv4jsid.onion"
+    ],
+    "i2p": [
+      "http://maidzones5taqt3g2boaepkxdi6f2etznqbfebludsl4i2ydrcjq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "vixipy": {
+    "clearnet": [
+      "https://vx.maid.zone",
+      "http://217.154.227.61:47474",
+      "https://vixipy.bloat.cat"
+    ],
+    "tor": [
+      "http://vx.maidzonekwrk4xbbmynqnprq2lu7picruncfscfwmyzbmec6naurhyqd.onion"
+    ],
+    "i2p": [
+      "http://maidzoneoes7jtcridydescxwadf3cjzd6j5qll6bfs3wbkm2upq.b32.i2p"
+    ],
+    "loki": []
+  },
+  "liteXiv": {
+    "clearnet": [
+      "https://litexiv.qunn.link",
+      "https://litexiv.bloat.cat",
+      "https://lxv.dc09.ru",
+      "https://lite.ext4.xyz"
+    ],
+    "tor": [],
+    "i2p": [],
+    "loki": []
+  }
+}
