@@ -1,0 +1,26 @@
+# Coolify production compose.
+# Coolify's Docker Compose build pack reads this file. It is configured to pull
+# the prebuilt images from GHCR rather than building on the Coolify host.
+# GitHub Actions sets the APP_TAG env var to the immutable commit SHA; images
+# are tagged with that SHA in GHCR.
+#
+# For local development, use docker-compose.dev.yml (see file).
+
+services:
+  safelink:
+    image: ghcr.io/mouadlotfi/safelink:${APP_TAG}
+    environment:
+      SAFELINK_BACKEND_URL: ${SAFELINK_BACKEND_URL}
+      NEXT_PUBLIC_WEBSITE_URL: ${NEXT_PUBLIC_WEBSITE_URL}
+    depends_on:
+      - backend
+
+  backend:
+    image: ghcr.io/mouadlotfi/safelink-backend:${APP_TAG}
+    environment:
+      WEBSITE_URL: ${NEXT_PUBLIC_WEBSITE_URL}
+    volumes:
+      - safelink_data:/app/data
+
+volumes:
+  safelink_data:

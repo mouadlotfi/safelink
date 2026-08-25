@@ -1,0 +1,28 @@
+# Local development compose file.
+# Run with: docker compose -f docker-compose.dev.yml up --build
+# Builds images locally from source instead of pulling prebuilt images from GHCR.
+
+services:
+  safelink:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      SAFELINK_BACKEND_URL: http://backend:8000
+      NEXT_PUBLIC_WEBSITE_URL: http://localhost:3000
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      WEBSITE_URL: http://localhost:3000
+    volumes:
+      - safelink_dev_data:/app/data
+
+volumes:
+  safelink_dev_data:
