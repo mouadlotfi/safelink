@@ -73,8 +73,6 @@ export function UrlProcessor() {
   const [altFrontend, setAltFrontend] = useState<AlternativeFrontendMatch | null>(null);
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
   const [lastCleanCount, setLastCleanCount] = useState(0);
-  const [clipboardSuggestion, setClipboardSuggestion] = useState<string | null>(null);
-  const [clipboardDismissed, setClipboardDismissed] = useState(false);
 
   const { showToast } = useToast();
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
@@ -124,35 +122,6 @@ export function UrlProcessor() {
     return () => clearTimeout(timeoutId);
   }, [copiedUrl]);
 
-  useEffect(() => {
-    if (clipboardDismissed || clipboardSuggestion) {
-      return;
-    }
-    if (typeof navigator === "undefined" || typeof navigator.clipboard?.readText !== "function") {
-      return;
-    }
-
-    let cancelled = false;
-    navigator.clipboard
-      .readText()
-      .then((text) => {
-        if (cancelled) {
-          return;
-        }
-        const trimmed = text.trim();
-        try {
-          const parsed = new URL(trimmed);
-          if (parsed.protocol === "http:" || parsed.protocol === "https:") {
-            setClipboardSuggestion(trimmed);
-          }
-        } catch {}
-      })
-      .catch(() => {});
-
-    return () => {
-      cancelled = true;
-    };
-  }, [clipboardDismissed, clipboardSuggestion]);
 
   const handleCopy = useCallback(async (value: string, label = "URL"): Promise<void> => {
     if (!value) {
@@ -318,16 +287,6 @@ export function UrlProcessor() {
     }
   }, [clean, showToast]);
 
-  const handleCleanSuggestion = useCallback(async (): Promise<void> => {
-    if (!clipboardSuggestion) {
-      return;
-    }
-    const suggestion = clipboardSuggestion;
-    setClipboardSuggestion(null);
-    setClipboardDismissed(true);
-    setInput(suggestion);
-    await clean(suggestion);
-  }, [clean, clipboardSuggestion]);
 
   const handleInputChange = useCallback((event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setInput(event.target.value);
@@ -411,31 +370,6 @@ export function UrlProcessor() {
           </button>
         </div>
 
-        {clipboardSuggestion && (
-          <div className="mt-4 flex items-center justify-between gap-3 rounded-lg border border-blue-500/20 bg-blue-500/10 px-4 py-3">
-            <p className="min-w-0 truncate text-sm text-blue-300">
-              Copied URL detected: <span className="font-mono">{clipboardSuggestion}</span>
-            </p>
-            <div className="flex shrink-0 items-center gap-2">
-              <button
-                type="button"
-                onClick={handleCleanSuggestion}
-                disabled={loading}
-                className="rounded-md bg-blue-500/20 px-3 py-1 text-xs font-medium text-blue-300 transition-colors hover:bg-blue-500/30"
-              >
-                Clean it
-              </button>
-              <button
-                type="button"
-                onClick={() => setClipboardDismissed(true)}
-                aria-label="Dismiss clipboard suggestion"
-                className="rounded-md p-1 text-slate-400 transition-colors hover:text-slate-200"
-              >
-                <IconX className="h-4 w-4" />
-              </button>
-            </div>
-          </div>
-        )}
       </div>
 
       {hasResults && (

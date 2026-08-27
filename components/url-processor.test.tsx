@@ -190,7 +190,7 @@ https://good.example/?utm_source=y`);
     ).toBeInTheDocument();
   });
 
-  it("suggests cleaning a URL found in the clipboard", async () => {
+  it("pastes and cleans from clipboard when clicking Paste & Clean", async () => {
     Object.defineProperty(navigator, "clipboard", {
       value: { readText: vi.fn().mockResolvedValue(TRACKED) },
       configurable: true,
@@ -200,8 +200,7 @@ https://good.example/?utm_source=y`);
 
     render(<UrlProcessor />);
 
-    expect(await screen.findByText(/Copied URL detected/)).toBeInTheDocument();
-    fireEvent.click(screen.getByRole("button", { name: "Clean it" }));
+    fireEvent.click(screen.getByRole("button", { name: "Paste & Clean" }));
 
     expect(await screen.findByText(CLEANED)).toBeInTheDocument();
     delete (navigator as { clipboard?: unknown }).clipboard;
