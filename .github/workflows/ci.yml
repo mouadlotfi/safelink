@@ -215,7 +215,7 @@ jobs:
           echo "Coolify deployment queued with UUID: ${DEPLOYMENT_UUID}"
 
           TIMEOUT_SECONDS=600
-          POLL_INTERVAL=5
+          POLL_INTERVAL=2
           ELAPSED=0
 
           echo "Waiting for deployment to complete (timeout: ${TIMEOUT_SECONDS}s)..."

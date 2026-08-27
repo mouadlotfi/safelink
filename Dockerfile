@@ -17,8 +17,6 @@ COPY eslint.config.mjs eslint.config.mjs
 COPY app app
 COPY components components
 COPY lib lib
-COPY clearurls-rules.json clearurls-rules.json
-COPY data.json data.json
 COPY public public
 
 FROM base AS build
@@ -39,8 +37,6 @@ ENV PORT=3000
 COPY --chown=bun:bun --from=build /app/public ./public
 COPY --chown=bun:bun --from=build /app/.next/standalone ./
 COPY --chown=bun:bun --from=build /app/.next/static ./.next/static
-COPY --chown=bun:bun --from=base /app/clearurls-rules.json ./clearurls-rules.json
-COPY --chown=bun:bun --from=base /app/data.json ./data.json
 
 USER bun
 
