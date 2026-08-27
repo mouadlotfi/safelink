@@ -1,6 +1,7 @@
 const isDev = process.env.NODE_ENV === "development";
 
 const nextConfig = {
+  output: 'standalone',
   reactStrictMode: true,
   poweredByHeader: false,
   typedRoutes: true,
