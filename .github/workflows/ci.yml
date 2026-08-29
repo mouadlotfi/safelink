@@ -15,10 +15,7 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.ref != 'refs/heads/main' }}
 
-permissions:
-  contents: read
-  packages: write
-  id-token: write
+permissions: {}
 
 env:
   REGISTRY: ghcr.io
@@ -29,13 +26,18 @@ jobs:
   backend:
     name: Backend tests + lint
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
     defaults:
       run:
         working-directory: backend
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: astral-sh/setup-uv@v6
+      - name: Set up uv
+        uses: astral-sh/setup-uv@c7f87aa956e4c323abf06d5dec078e358f6b4d04 # v6.0.0
         with:
           enable-cache: true
           cache-dependency-glob: "backend/uv.lock"
@@ -52,15 +54,20 @@ jobs:
   frontend:
     name: Frontend tests + lint + typecheck
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
-      - uses: oven-sh/setup-bun@v2
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2.0.1
         with:
           bun-version-file: package.json
 
       - name: Install dependencies
-        run: bun install
+        run: bun install --frozen-lockfile
 
       - name: Run tests
         run: bun run test
@@ -74,6 +81,9 @@ jobs:
   docker-build:
     name: Docker build check (${{ matrix.target }})
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
     if: github.event_name == 'pull_request'
     strategy:
       fail-fast: false
@@ -86,13 +96,14 @@ jobs:
             file: backend/Dockerfile
             scope: backend
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
 
-      - name: Build ${{ matrix.target }} image
-        uses: docker/build-push-action@v6
+      - name: Build ${{ matrix.target }} image (dry run)
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 # v6.15.0
         with:
           context: .
           file: ${{ matrix.file }}
@@ -102,8 +113,12 @@ jobs:
   build-images:
     name: Build and push (${{ matrix.target }})
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [backend, frontend]
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    permissions:
+      contents: read
+      packages: write
     strategy:
       fail-fast: false
       matrix:
@@ -119,20 +134,21 @@ jobs:
             scope: backend
             build-args: ""
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
 
       - name: Log in to GHCR
-        uses: docker/login-action@v3
+        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567 # v3.3.0
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push ${{ matrix.target }}
-        uses: docker/build-push-action@v6
+      - name: Build and push ${{ matrix.target }} image
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 # v6.15.0
         with:
           context: .
           file: ${{ matrix.file }}
@@ -140,21 +156,37 @@ jobs:
           tags: |
             ${{ matrix.image }}:sha-${{ github.sha }}
           build-args: ${{ matrix.build-args }}
+          labels: |
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+            org.opencontainers.image.revision=${{ github.sha }}
+            org.opencontainers.image.licenses=GPL-3.0
           cache-from: type=gha,scope=${{ matrix.scope }}
           cache-to: type=gha,mode=max,scope=${{ matrix.scope }}
 
   deploy:
     name: Deploy to Coolify
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: [build-images]
     if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     environment:
       name: production
       url: https://safelink.mouadlotfi.com
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      COOLIFY_HOST: ${{ vars.COOLIFY_HOST || 'http://100.100.217.81:8000' }}
+      APP_UUID: ${{ vars.COOLIFY_APP_UUID || 'pmkq6fpr4hbgv1jworcecwcb' }}
+      APP_TAG_VALUE: sha-${{ github.sha }}
+      COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
+      COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
       - name: Connect to Tailscale (WIF)
-        uses: tailscale/github-action@v4
+        uses: tailscale/github-action@2976a889fced77bb9d364be5297d56cbd6f178d8 # v4.0.0
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
           audience: ${{ secrets.TS_AUDIENCE }}
@@ -162,14 +194,9 @@ jobs:
           ping: 100.100.217.81
 
       - name: Verify Coolify connectivity
-        run: curl --fail --silent --max-time 10 http://100.100.217.81:8000
+        run: curl --fail --silent --max-time 10 "${COOLIFY_HOST}"
 
       - name: Point Coolify APP_TAG at this commit
-        env:
-          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
-          COOLIFY_HOST: http://100.100.217.81:8000
-          APP_UUID: pmkq6fpr4hbgv1jworcecwcb
-          APP_TAG_VALUE: sha-${{ github.sha }}
         run: |
           set -euo pipefail
 
@@ -188,14 +215,10 @@ jobs:
               cat /tmp/coolify_env_resp.json || true
               exit 1
             fi
-            echo " Successfully updated APP_TAG (is_preview=${PREVIEW})"
+            echo "Successfully updated APP_TAG (is_preview=${PREVIEW})"
           done
 
       - name: Trigger and verify Coolify deployment
-        env:
-          COOLIFY_WEBHOOK: ${{ secrets.COOLIFY_WEBHOOK }}
-          COOLIFY_TOKEN: ${{ secrets.COOLIFY_TOKEN }}
-          COOLIFY_HOST: http://100.100.217.81:8000
         run: |
           set -euo pipefail
 
