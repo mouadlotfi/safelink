@@ -66,8 +66,9 @@ jobs:
         with:
           bun-version-file: package.json
 
+      # Dependabot PRs update package.json but not bun.lock; allow Bun to sync it.
       - name: Install dependencies
-        run: bun install --frozen-lockfile
+        run: bun install ${{ github.actor == 'dependabot[bot]' && '' || '--frozen-lockfile' }}
 
       - name: Run tests
         run: bun run test
@@ -102,7 +103,11 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
 
+      # Dependabot PRs don't update bun.lock; the frontend Docker build (frozen
+      # lockfile) would fail. Dependency validity is already covered by the
+      # frontend test job, which allows Bun to sync the lockfile.
       - name: Build ${{ matrix.target }} image (dry run)
+        if: ${{ github.actor != 'dependabot[bot]' || matrix.target != 'frontend' }}
         uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 # v6.15.0
         with:
           context: .
