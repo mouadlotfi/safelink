@@ -133,7 +133,7 @@ jobs:
           cache-to: type=gha,mode=max,scope=${{ matrix.scope }}
 
   deploy:
-    name: Deploy to Coolify
+    name: Deploy
     runs-on: ubuntu-latest
     timeout-minutes: 15
     needs: [build-images]
