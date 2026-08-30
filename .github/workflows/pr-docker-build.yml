@@ -1,0 +1,49 @@
+# PR-only validation: verifies both Dockerfiles compile without publishing.
+# Kept separate from ci.yml so it never shows as "skipped" on main pushes,
+# where build-images already builds and pushes the images.
+
+name: Docker build check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docker-build:
+    name: Build ${{ matrix.target }} image (dry run)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: frontend
+            file: Dockerfile
+            scope: frontend
+          - target: backend
+            file: backend/Dockerfile
+            scope: backend
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@b5ca514318bd6ebac0fb2aedd5d36ec1b5c232a2 # v3.10.0
+
+      # Dependabot PRs don't update bun.lock; the frontend Docker build (frozen
+      # lockfile) would fail. Dependency validity is already covered by the
+      # frontend test job in ci.yml, which allows Bun to sync the lockfile.
+      - name: Build ${{ matrix.target }} image (dry run)
+        if: ${{ github.actor != 'dependabot[bot]' || matrix.target != 'frontend' }}
+        uses: docker/build-push-action@471d1dc4e07e5cdedd4c2171150001c434f0b7a4 # v6.15.0
+        with:
+          context: .
+          file: ${{ matrix.file }}
+          push: false
+          cache-from: type=gha,scope=${{ matrix.scope }}
