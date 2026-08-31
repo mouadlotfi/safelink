@@ -126,7 +126,7 @@ def test_youtube_playlist_without_video_does_not_match():
 def test_twitter_preserves_path():
     assert_result(
         build_url("twitter.com", "/someuser/status/1234567890"),
-        "https://nitter.catsarch.com/someuser/status/1234567890",
+        "https://x.n0g.xyz/someuser/status/1234567890",
         "Twitter",
     )
 
@@ -134,7 +134,7 @@ def test_twitter_preserves_path():
 def test_x_preserves_path():
     assert_result(
         build_url("x.com", "/someuser/status/1234567890"),
-        "https://nitter.catsarch.com/someuser/status/1234567890",
+        "https://x.n0g.xyz/someuser/status/1234567890",
         "Twitter",
     )
 
@@ -142,10 +142,9 @@ def test_x_preserves_path():
 def test_mobile_twitter_preserves_path():
     assert_result(
         build_url("mobile.twitter.com", "/someuser/status/1234567890"),
-        "https://nitter.catsarch.com/someuser/status/1234567890",
+        "https://x.n0g.xyz/someuser/status/1234567890",
         "Twitter",
     )
-
 
 # --- Reddit ---
 
