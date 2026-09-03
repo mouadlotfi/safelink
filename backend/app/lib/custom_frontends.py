@@ -100,7 +100,7 @@ CUSTOM_FRONTEND_CONFIGS: dict[str, dict] = {
         "hostnames": ["youtube.com", "www.youtube.com", "youtu.be", "youtube-nocookie.com"],
     },
     "twitter": {
-        "base_url": "https://x.n0g.xyz",
+        "base_url": "https://nitter.meowing.monster",
         "handler": None,
         "service_name": "Twitter",
         "hostnames": ["twitter.com", "x.com", "mobile.twitter.com"],
