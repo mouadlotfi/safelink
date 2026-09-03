@@ -1,24 +1,26 @@
-# Coolify production compose.
-# Coolify's Docker Compose build pack reads this file. It is configured to pull
-# the prebuilt images from GHCR rather than building on the Coolify host.
-# GitHub Actions sets the APP_TAG env var to the immutable commit SHA; images
-# are tagged with that SHA in GHCR.
-#
-# For local development, use docker-compose.dev.yml (see file).
+# Production compose (GHCR prebuilt images).
+# Local development: docker compose -f docker-compose.dev.yml up --build
 
 services:
   safelink:
-    image: ghcr.io/mouadlotfi/safelink:${APP_TAG}
+    image: ${FRONTEND_IMAGE:-ghcr.io/mouadlotfi/safelink}:${APP_TAG:-latest}
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3044}:3000"
     environment:
-      SAFELINK_BACKEND_URL: ${SAFELINK_BACKEND_URL}
-      NEXT_PUBLIC_WEBSITE_URL: ${NEXT_PUBLIC_WEBSITE_URL}
+      SAFELINK_BACKEND_URL: ${SAFELINK_BACKEND_URL:-http://backend:8000}
+      NEXT_PUBLIC_WEBSITE_URL: ${NEXT_PUBLIC_WEBSITE_URL:-http://localhost:3044}
+      API_KEYS: ${API_KEYS:-}
     depends_on:
-      - backend
+      backend:
+        condition: service_healthy
 
   backend:
-    image: ghcr.io/mouadlotfi/safelink-backend:${APP_TAG}
+    image: ${BACKEND_IMAGE:-ghcr.io/mouadlotfi/safelink-backend}:${APP_TAG:-latest}
+    restart: unless-stopped
     environment:
-      WEBSITE_URL: ${NEXT_PUBLIC_WEBSITE_URL}
+      WEBSITE_URL: ${NEXT_PUBLIC_WEBSITE_URL:-http://localhost:3044}
+      SAFELINK_STATS_DB: ${SAFELINK_STATS_DB:-/app/data/safelink_stats.sqlite3}
     volumes:
       - safelink_data:/app/data
 
