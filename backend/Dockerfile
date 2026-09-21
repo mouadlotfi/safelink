@@ -3,8 +3,10 @@ COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
 WORKDIR /app
 
-RUN groupadd --system app \
-    && useradd --system --gid app --home-dir /app app
+# Pin the UID/GID so the /app/data volume owner cannot drift with the base image.
+RUN groupadd --gid 10001 app \
+    && useradd --uid 10001 --gid 10001 --home-dir /app --no-create-home \
+        --shell /usr/sbin/nologin app
 
 COPY backend/pyproject.toml backend/uv.lock ./
 

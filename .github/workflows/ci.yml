@@ -187,6 +187,10 @@ jobs:
           echo "Updating containers..."
           APP_TAG="${TARGET_TAG}" docker compose -p "${PROJECT_NAME}" up -d --remove-orphans
 
+          # Docker does not update an existing volume when the image UID changes.
+          echo "Reconciling data volume ownership..."
+          docker compose -p "${PROJECT_NAME}" exec -T -u root backend chown -R app:app /app/data
+
           echo "Waiting for services to become healthy..."
           START_TIME=$(date +%s)
           DEPLOY_OK=false
