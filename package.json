@@ -5,6 +5,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:all": "bash scripts/dev.sh",
+    "dev:all:win": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/dev.ps1",
     "build": "next build",
     "start": "next start",
     "lint": "eslint .",

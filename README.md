@@ -166,6 +166,24 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
+#### 3. Run both services together
+
+After the setup above, you can start the backend and the frontend with one command instead of two terminals:
+
+```bash
+bun run dev:all
+```
+
+The script starts the backend on port 8000 and the frontend on port 3000, prints both URLs, and stops both when you press `Ctrl+C` or when either process exits. It checks that `node_modules` and the backend virtualenv exist, and prints the command to run if either is missing.
+
+On Windows, use PowerShell instead:
+
+```powershell
+bun run dev:all:win
+```
+
+The scripts live in [scripts/dev.sh](scripts/dev.sh) (bash) and [scripts/dev.ps1](scripts/dev.ps1) (PowerShell).
+
 ---
 
 ## REST API reference
