@@ -169,6 +169,13 @@ AIRBNB_TRACKER_PARAM_PATTERNS = [
     ]
 ]
 
+INSTAGRAM_TRACKER_PARAM_PATTERNS = [
+    re.compile(pattern, re.IGNORECASE)
+    for pattern in [
+        r"^stkn$",
+    ]
+]
+
 
 
 
@@ -440,6 +447,7 @@ def _apply_fallback(url: str) -> str:
     is_google = hostname == "google.com" or hostname.endswith(".google.com")
     is_booking = hostname == "booking.com" or hostname.endswith(".booking.com")
     is_airbnb = hostname.startswith("airbnb.") or ".airbnb." in hostname
+    is_instagram = hostname == "instagram.com" or hostname.endswith(".instagram.com")
     cleaned_path = parsed.path
 
     if is_facebook and (story_match := FACEBOOK_STORY_TRACKER_PATH.match(parsed.path)):
@@ -473,6 +481,10 @@ def _apply_fallback(url: str) -> str:
             keys_to_delete.add(key)
         elif is_airbnb and any(
             pattern.search(key) for pattern in AIRBNB_TRACKER_PARAM_PATTERNS
+        ):
+            keys_to_delete.add(key)
+        elif is_instagram and any(
+            pattern.search(key) for pattern in INSTAGRAM_TRACKER_PARAM_PATTERNS
         ):
             keys_to_delete.add(key)
 

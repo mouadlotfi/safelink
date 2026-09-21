@@ -169,6 +169,13 @@ def test_clean_url_removes_instagram_share_trackers():
     assert result == "https://www.instagram.com/reel/sample_reel_id/"
 
 
+def test_clean_url_removes_instagram_share_token():
+    ruleset = ClearUrlsRuleSet()
+    url = "https://www.instagram.com/p/DdUK3GPREfB/?utm_source=ig_web_copy_link&stkn=NTc4MTIwNj"
+    result = clean_url_with_rules(url, ruleset)
+    assert result == "https://www.instagram.com/p/DdUK3GPREfB/"
+
+
 def test_clean_url_removes_spotify_tracking_params():
     ruleset = ClearUrlsRuleSet()
     url = "https://open.spotify.com/track/sample_track_id?pi=sample_pi&sci=spotify%3Acard-config%3Asample"
