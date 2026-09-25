@@ -76,6 +76,41 @@ describe("UrlProcessor", () => {
     expect(screen.getByLabelText<HTMLTextAreaElement>("Enter URLs").value).toBe("");
   });
 
+  it("ignores trailing text after a URL in URL mode", async () => {
+    const url = "https://social.example/user/status/1234567890?s=20";
+    mocks.cleanUrl.mockResolvedValue({ original: url, cleaned: url, wasExpanded: false });
+    mocks.fetchAlternativeFrontend.mockResolvedValue({
+      original: url,
+      cleaned: url,
+      alternative: null,
+      isCustomFrontend: false,
+    });
+
+    render(<UrlProcessor />);
+    pasteInto(screen.getByLabelText("Enter URLs"), `${url} asdjla`);
+
+    expect(await screen.findByText(url)).toBeInTheDocument();
+    expect(mocks.cleanUrl).toHaveBeenCalledWith(url);
+    expect(mocks.fetchAlternativeFrontend).toHaveBeenCalledWith(url);
+  });
+
+  it("preserves percent-encoded spaces that are part of a URL", async () => {
+    const url = "https://example.com/search?q=hello%20world";
+    mocks.cleanUrl.mockResolvedValue({ original: url, cleaned: url, wasExpanded: false });
+    mocks.fetchAlternativeFrontend.mockResolvedValue({
+      original: url,
+      cleaned: url,
+      alternative: null,
+      isCustomFrontend: false,
+    });
+
+    render(<UrlProcessor />);
+    pasteInto(screen.getByLabelText("Enter URLs"), url);
+
+    expect(await screen.findByText(url)).toBeInTheDocument();
+    expect(mocks.cleanUrl).toHaveBeenCalledWith(url);
+  });
+
   it("cleans multiple pasted URLs line by line without an alternative card", async () => {
     mocks.cleanUrl.mockImplementation(async (url: string) => ({
       original: url,

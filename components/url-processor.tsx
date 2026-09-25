@@ -36,7 +36,11 @@ const parseInputUrls = (raw: string): string[] =>
   raw
     .split(/\r?\n/)
     .map((line) => line.trim())
-    .filter(Boolean);
+    .filter(Boolean)
+    .flatMap((line) => {
+      const urls = extractUrls(line);
+      return urls.length > 0 ? urls : [line];
+    });
 
 const getInvalidUrls = (urls: string[]): string[] =>
   urls.filter((url) => {

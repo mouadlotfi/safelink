@@ -36,6 +36,32 @@ describe("browser URL redirects", () => {
     expect(response.headers.get("referrer-policy")).toBe("no-referrer");
   });
 
+  it("ignores trailing text after the URL in browser redirect requests", async () => {
+    const url = "https://social.example/user/status/1234567890?s=20";
+    mocks.getCleanedUrl.mockResolvedValue({ cleaned: url });
+
+    const response = await cleanGet(
+      request(`/go/clean?url=${encodeURIComponent(`${url} asdjla`)}`)
+    );
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toBe(url);
+    expect(mocks.getCleanedUrl).toHaveBeenCalledWith(url);
+  });
+
+  it("preserves percent-encoded spaces in browser redirect requests", async () => {
+    const url = "https://example.com/search?q=hello%20world";
+    mocks.getCleanedUrl.mockResolvedValue({ cleaned: url });
+
+    const response = await cleanGet(
+      request(`/go/clean?url=${encodeURIComponent(url)}`)
+    );
+
+    expect(response.status).toBe(307);
+    expect(response.headers.get("location")).toBe(url);
+    expect(mocks.getCleanedUrl).toHaveBeenCalledWith(url);
+  });
+
   it("redirects alternative requests to the alternative when available", async () => {
     mocks.getAlternativeFrontend.mockResolvedValue({
       cleaned: "https://youtube.com/watch?v=abc",
