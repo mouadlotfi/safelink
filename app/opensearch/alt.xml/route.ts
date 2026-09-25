@@ -1,7 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function GET(request: NextRequest) {
-  const origin = escapeXml(request.nextUrl.origin);
+  const origin = escapeXml(
+    new URL(process.env.NEXT_PUBLIC_WEBSITE_URL || request.nextUrl.origin).origin
+  );
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
   <ShortName>Safelink Alt</ShortName>
