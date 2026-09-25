@@ -1,3 +1,5 @@
+import { SearchEngineSetup } from "@/components/search-engine-setup";
+
 const socials: { label: string; href: string }[] = [
   { label: "GitHub", href: "https://github.com/mouadlotfi/safelink" }
 ];
@@ -24,6 +26,8 @@ export default function InfoPage() {
           Safelink removes tracking parameters from the links you share and offers alternative URLs for supported websites.
         </p>
       </section>
+
+      <SearchEngineSetup />
 
       <section className="card p-6">
         <h3 className="text-lg font-semibold text-white">Links</h3>

@@ -37,6 +37,7 @@ Safelink is a self-hostable privacy tool that strips tracking parameters from sh
 - **Short link expansion.** Follows redirects for short links (`vt.tiktok.com`, `fb.watch`, `lnkd.in`, and Reddit share links) and extracts canonical `<link>` tags.
 - **Alternative frontends.** Queries LibRedirect instances, verifies availability via live HTTP HEAD probing, and prioritizes curated primary mirrors.
 - **Batch and text modes.** Clean single links, multi-line URL lists, or paste full paragraphs of text to replace links in place without breaking punctuation.
+- **Browser address-bar shortcuts.** Add Safelink Clean and Safelink Alt in Firefox, Chrome/Chromium, or Edge to clean a URL or open a privacy-friendly alternative directly.
 - **Local history.** Keeps cleaned link history strictly in browser `localStorage` with quota safeguards and one-click JSON export. Nothing is logged on the server.
 - **CORS-enabled REST API.** Exposes rate-limited `/api/clean`, `/api/alt`, and `/api/stats` endpoints for scripting and extension integration.
 
@@ -71,7 +72,7 @@ Browser (React 19 / UI)
 lib/api-client.ts (In-flight request deduplication)
    │
    ▼
-Next.js API Proxy (app/api/{clean,alt,stats}/route.ts)
+Next.js routes (app/api/* and app/go/*)
    │  • Sliding-window rate limiting (IP / x-api-key)
    │  • URL format validation (HTTP/HTTPS, max 8192 chars)
    │
@@ -102,7 +103,9 @@ backend/app/lib/stats.py (Atomic SQLite counter in safelink_stats.sqlite3)
 ```
 .
 ├── app/                  # Next.js App Router (pages, layout, proxy route handlers)
-│   ├── api/              # Proxy routes: /api/clean, /api/alt, /api/stats
+│   ├── api/              # JSON proxy routes: /api/clean, /api/alt, /api/stats
+│   ├── go/               # Browser address-bar redirect routes
+│   ├── opensearch/       # Search-engine discovery descriptions
 │   ├── api-docs/         # Interactive API documentation page
 │   ├── history/          # Cleaned URLs local history page
 │   └── info/             # Privacy & supported services documentation
@@ -183,6 +186,37 @@ bun run dev:all:win
 ```
 
 The scripts live in [scripts/dev.sh](scripts/dev.sh) (bash) and [scripts/dev.ps1](scripts/dev.ps1) (PowerShell).
+
+---
+
+## Add Safelink to your browser
+
+Safelink provides two address-bar shortcuts. **Clean URL** removes tracking parameters. **Privacy-friendly alternative** opens an alternative frontend when one is available, or the cleaned original URL otherwise.
+
+Use `https://safelink.mouadlotfi.com` for the hosted Safelink service. For a self-hosted or local deployment, replace the hostname with your own site address.
+
+### Firefox
+
+1. Visit your Safelink site. Firefox can discover the search engines from the OpenSearch descriptions linked in the page.
+2. Open the search field's engine menu and choose **Add Search Engine** for **Safelink Clean** or **Safelink Alternative**. The exact control depends on your Firefox layout. You can also check **Settings → Search** after visiting the site.
+3. Assign a keyword in **Settings → Search → Search Shortcuts**, such as `clean` or `alt`.
+4. In the address bar, type the keyword, press Space, enter an HTTP or HTTPS URL, then press Enter.
+
+### Chrome and other Chromium browsers
+
+1. Open **Settings → Search engine → Manage search engines and site search**.
+2. Under **Site search**, choose **Add**. Enter a name and shortcut, then use one of these URLs.
+
+   | Name | Shortcut | URL |
+   | --- | --- | --- |
+   | Safelink Clean | `clean` | `https://safelink.mouadlotfi.com/go/clean?url=%s` |
+   | Safelink Alternative | `alt` | `https://safelink.mouadlotfi.com/go/alt?url=%s` |
+
+3. Save the site search. In the address bar, type its shortcut, press Space or Tab, enter an HTTP or HTTPS URL, then press Enter.
+
+In Microsoft Edge, add the same URLs under **Settings → Privacy, search, and services → Address bar and search**. Menu names may vary slightly between Chromium browsers.
+
+To test locally, use `http://localhost:3000/go/clean?url=%s` and `http://localhost:3000/go/alt?url=%s` as the URLs. Start both app services first with `bun run dev:all`.
 
 ---
 

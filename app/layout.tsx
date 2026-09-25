@@ -19,6 +19,20 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <link
+          rel="search"
+          type="application/opensearchdescription+xml"
+          title="Safelink Clean"
+          href="/opensearch/clean.xml"
+        />
+        <link
+          rel="search"
+          type="application/opensearchdescription+xml"
+          title="Safelink Alternative"
+          href="/opensearch/alt.xml"
+        />
+      </head>
       <body className="antialiased">
         <ToastProvider>
 
