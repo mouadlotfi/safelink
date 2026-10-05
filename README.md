@@ -5,7 +5,7 @@
 <h1 align="center">Safelink</h1>
 
 <p align="center">
-  <strong>Privacy-first URL cleaner and alternative frontend resolver.</strong>
+  <strong>Strips tracking parameters from links and finds privacy-friendly frontends to open them in.</strong>
 </p>
 
 <p align="center">
@@ -25,45 +25,45 @@
 
 ---
 
-## Project overview
+## What it does
 
-Safelink is a self-hostable privacy tool that strips tracking parameters from shared links and discovers active alternative frontends for popular websites.
-
----
-
-## Key features
-
-- **Tracker stripping.** Applies compiled ClearURLs rules alongside hardcoded pattern filters for TikTok, Facebook, Instagram, Spotify, and LinkedIn.
-- **Short link expansion.** Follows redirects for short links (`vt.tiktok.com`, `fb.watch`, `lnkd.in`, and Reddit share links) and extracts canonical `<link>` tags.
-- **Alternative frontends.** Queries LibRedirect instances, verifies availability via live HTTP HEAD probing, and prioritizes curated primary mirrors.
-- **Batch and text modes.** Clean single links, multi-line URL lists, or paste full paragraphs of text to replace links in place without breaking punctuation.
-- **Browser address-bar shortcuts.** Add Safelink Clean and Safelink Alt in Firefox, Chrome/Chromium, or Edge to clean a URL or open a privacy-friendly alternative directly.
-- **Local history.** Keeps cleaned link history strictly in browser `localStorage` with quota safeguards and one-click JSON export. Nothing is logged on the server.
-- **CORS-enabled REST API.** Exposes rate-limited `/api/clean`, `/api/alt`, and `/api/stats` endpoints for scripting and extension integration.
+Safelink takes a link full of tracking junk and gives you back a clean one. Paste in a video, post, or track URL and it removes the tracking parameters, follows the shortener if there is one, and can point you at a frontend that does not log what you read. You can run it yourself or use the hosted instance.
 
 ---
 
-## Technology stack
+## Features
+
+- Strips tracking parameters with ClearURLs rules plus hand-written filters for TikTok, Facebook, Instagram, Spotify, and LinkedIn.
+- Follows short-link redirects (`vt.tiktok.com`, `fb.watch`, `lnkd.in`, and Reddit share links) and reads canonical `<link>` tags when that is faster.
+- Finds working alternative frontends by querying LibRedirect instances, checking them with live HTTP HEAD requests, and preferring curated mirrors.
+- Cleans a single link, a pasted list, or a whole paragraph, leaving the surrounding punctuation untouched.
+- Runs from the address bar in Firefox, Chrome, Chromium, and Edge, so you do not have to open the app first.
+- Keeps history in browser `localStorage` with a quota safeguard and JSON export. The server logs nothing.
+- Exposes a rate-limited REST API at `/api/clean`, `/api/alt`, and `/api/stats` for scripts and extensions.
+
+---
+
+## Stack
 
 | Layer | Technology | Version | Purpose |
 | :--- | :--- | :--- | :--- |
-| **Frontend Framework** | [Next.js](https://nextjs.org/) (App Router) | `16.2.11` | UI rendering, client state, and proxy route handlers |
-| **UI Library** | [React](https://react.dev/) | `19.2.8` | Client-side reactive interface |
-| **Styling** | [Tailwind CSS](https://tailwindcss.com/) | `3.4.19` | Responsive dark-mode styling |
-| **Frontend Runtime** | [Bun](https://bun.sh/) | `1.3.6` | Package manager, bundler, and test runner |
-| **Backend Framework** | [FastAPI](https://fastapi.tiangolo.com/) | `>= 0.115.0` | High-performance asynchronous REST API |
-| **Backend Runtime** | [Python](https://python.org/) | `>= 3.11` (`3.12` in Docker) | URL parsing and processing engine |
-| **Python Tooling** | [uv](https://docs.astral.sh/uv/) | Latest | Fast Python virtual environment and dependency manager |
-| **HTTP Client** | [httpx](https://www.python-httpx.org/) | `>= 0.28.0` | Async HTTP client for redirects and instance probing |
-| **Data Validation** | [Pydantic](https://docs.pydantic.dev/) | `>= 2.10.0` | Request and response schema enforcement |
-| **Database** | [SQLite](https://sqlite.org/) | Python stdlib | Persistent site-wide sanitized links counter |
-| **Containerization** | [Docker Compose](https://docs.docker.com/compose/) | v2 | Multi-stage image builds and deployment |
+| Frontend framework | [Next.js](https://nextjs.org/) (App Router) | `16.2.11` | UI, client state, and proxy routes |
+| UI library | [React](https://react.dev/) | `19.2.8` | Client-side UI |
+| Styling | [Tailwind CSS](https://tailwindcss.com/) | `3.4.19` | Dark-mode styling |
+| Frontend runtime | [Bun](https://bun.sh/) | `1.3.6` | Package manager, bundler, test runner |
+| Backend framework | [FastAPI](https://fastapi.tiangolo.com/) | `>= 0.115.0` | Async REST API |
+| Backend runtime | [Python](https://python.org/) | `>= 3.11` (`3.12` in Docker) | URL parsing and processing |
+| Python tooling | [uv](https://docs.astral.sh/uv/) | Latest | Virtualenv and dependency manager |
+| HTTP client | [httpx](https://www.python-httpx.org/) | `>= 0.28.0` | Async requests for redirects and instance probing |
+| Data validation | [Pydantic](https://docs.pydantic.dev/) | `>= 2.10.0` | Request and response schemas |
+| Database | [SQLite](https://sqlite.org/) | Python stdlib | Counts cleaned links |
+| Containers | [Docker Compose](https://docs.docker.com/compose/) | v2 | Builds images and runs the stack |
 
 ---
 
-## Project architecture
+## How it works
 
-Safelink separates client-side presentation from server-side URL operations. The Next.js frontend acts as a thin client; all URL expansion, rule compilation, and redirect probing run securely on the FastAPI backend.
+All URL work happens in the FastAPI backend. The Next.js frontend only renders the UI and proxies requests, so the browser never talks to the backend directly.
 
 ```
 Browser (React 19 / UI)
@@ -83,7 +83,7 @@ lib/url-service.ts (Server-side fetch with 45s timeout)
 FastAPI Backend (backend/app/main.py -> backend/app/routes/)
    │
    ▼
-backend/app/lib/url_service.py (Pipeline Orchestrator)
+backend/app/lib/url_service.py (Pipeline orchestrator)
    ├─► url_expander.py (Resolves redirects, canonical tags, yt-dlp fallback)
    ├─► clearurls.py (Applies ClearURLs rules + platform tracker patterns)
    ├─► custom_frontends.py (Static overrides: Imginn, Invidious, Nitter, Redlib)
@@ -94,7 +94,7 @@ backend/app/lib/stats.py (Atomic SQLite counter in safelink_stats.sqlite3)
 ```
 
 > [!NOTE]
-> The browser never connects directly to the backend. Next.js API proxy routes (`/api/*`) validate parameters and enforce rate limits before routing calls to FastAPI.
+> The browser never connects to the backend. Next.js proxy routes (`/api/*`) validate parameters and enforce rate limits before forwarding to FastAPI.
 
 ---
 
@@ -115,41 +115,41 @@ backend/app/lib/stats.py (Atomic SQLite counter in safelink_stats.sqlite3)
 │   ├── app/
 │   │   ├── main.py       # FastAPI application entrypoint and shared httpx lifespan
 │   │   ├── routes/       # Route handlers (/clean, /alt, /stats)
-│   │   └── lib/          # Core URL processing engine (url_service, expander, clearurls, etc.)
+│   │   └── lib/          # URL processing engine (url_service, expander, clearurls, etc.)
 │   └── tests/            # Pytest test suite (76 tests)
 ├── clearurls-rules.json  # Bundled ClearURLs ruleset fallback
 ├── data.json             # Bundled LibRedirect instances dataset fallback
 ├── docker-compose.yml    # Production compose (Coolify deployment with GHCR images)
 ├── docker-compose.dev.yml# Local dev compose (builds from source)
-└── AGENTS.md             # Authoritative repository guidelines and architectural reference
+└── AGENTS.md             # Repository guidelines and architectural reference
 ```
 
 ---
 
-## Getting started
+## Running it locally
 
-### Option 1: Docker Compose (Recommended)
+### Option 1: Docker Compose (recommended)
 
-Run the full stack with a single command:
+Start the whole stack:
 
 ```bash
 docker compose -f docker-compose.dev.yml up --build
 ```
 
-- **Frontend:** [http://localhost:3000](http://localhost:3000)
-- **Backend API:** [http://localhost:8000](http://localhost:8000)
-- **API Documentation:** [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
+- Frontend: [http://localhost:3000](http://localhost:3000)
+- Backend API: [http://localhost:8000](http://localhost:8000)
+- API docs: [http://localhost:3000/api-docs](http://localhost:3000/api-docs)
 
 ---
 
-### Option 2: Manual local setup
+### Option 2: Manual setup
 
 #### Prerequisites
 - [Bun](https://bun.sh) (`bun@1.3.6` or later)
 - [Python](https://python.org) (version 3.11 or higher)
 - [uv](https://docs.astral.sh/uv/)
 
-#### 1. Backend Setup
+#### Backend
 
 ```bash
 cd backend
@@ -157,7 +157,7 @@ uv sync --extra dev
 uv run uvicorn app.main:app --reload --port 8000
 ```
 
-#### 2. Frontend Setup
+#### Frontend
 
 In a separate terminal at the repository root:
 
@@ -169,15 +169,15 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-#### 3. Run both services together
+#### Both at once
 
-After the setup above, you can start the backend and the frontend with one command instead of two terminals:
+After the setup above, one command starts the backend on port 8000 and the frontend on port 3000, prints both URLs, and stops both on `Ctrl+C` or when either process exits:
 
 ```bash
 bun run dev:all
 ```
 
-The script starts the backend on port 8000 and the frontend on port 3000, prints both URLs, and stops both when you press `Ctrl+C` or when either process exits. It checks that `node_modules` and the backend virtualenv exist, and prints the command to run if either is missing.
+It checks that `node_modules` and the backend virtualenv exist, and prints the command to create whichever is missing.
 
 On Windows, use PowerShell instead:
 
@@ -191,14 +191,14 @@ The scripts live in [scripts/dev.sh](scripts/dev.sh) (bash) and [scripts/dev.ps1
 
 ## Add Safelink to your browser
 
-Safelink provides two address-bar shortcuts. **Clean URL** removes tracking parameters. **Privacy-friendly alternative** opens an alternative frontend when one is available, or the cleaned original URL otherwise.
+Safelink ships two address-bar shortcuts. **Clean URL** removes tracking parameters. **Privacy-friendly alternative** opens an alternative frontend when one exists, or the cleaned original URL when none does.
 
-Use `https://safelink.mouadlotfi.com` for the hosted Safelink service. For a self-hosted or local deployment, replace the hostname with your own site address.
+Use `https://safelink.mouadlotfi.com` for the hosted instance. For a self-hosted or local deployment, replace the hostname with your own.
 
 ### Firefox
 
-1. Visit your Safelink site. Firefox can discover the search engines from the OpenSearch descriptions linked in the page.
-2. Open the search field's engine menu and choose **Add Search Engine** for **Safelink Clean** or **Safelink Alternative**. The exact control depends on your Firefox layout. You can also check **Settings → Search** after visiting the site.
+1. Visit your Safelink site. Firefox discovers the search engines from the OpenSearch descriptions linked in the page.
+2. Open the search field's engine menu and choose **Add Search Engine** for **Safelink Clean** or **Safelink Alternative**. The exact control depends on your Firefox layout, and you can also check **Settings → Search** after visiting the site.
 3. Assign a keyword in **Settings → Search → Search Shortcuts**, such as `clean` or `alt`.
 4. In the address bar, type the keyword, press Space, enter an HTTP or HTTPS URL, then press Enter.
 
@@ -214,15 +214,15 @@ Use `https://safelink.mouadlotfi.com` for the hosted Safelink service. For a sel
 
 3. Save the site search. In the address bar, type its shortcut, press Space or Tab, enter an HTTP or HTTPS URL, then press Enter.
 
-In Microsoft Edge, add the same URLs under **Settings → Privacy, search, and services → Address bar and search**. Menu names may vary slightly between Chromium browsers.
+In Microsoft Edge, add the same URLs under **Settings → Privacy, search, and services → Address bar and search**. Menu names vary slightly between Chromium browsers.
 
-To test locally, use `http://localhost:3000/go/clean?url=%s` and `http://localhost:3000/go/alt?url=%s` as the URLs. Start both app services first with `bun run dev:all`.
+To test locally, use `http://localhost:3000/go/clean?url=%s` and `http://localhost:3000/go/alt?url=%s`. Start both services first with `bun run dev:all`.
 
 ---
 
 ## REST API reference
 
-All API routes support both `GET` (query parameter) and `POST` (JSON body) requests, with open CORS (`Access-Control-Allow-Origin: *`).
+Every route accepts `GET` (query parameter) and `POST` (JSON body), with open CORS (`Access-Control-Allow-Origin: *`).
 
 ### 1. Clean URL (`/api/clean`)
 
@@ -246,7 +246,7 @@ curl -X POST http://localhost:3000/api/clean \
 
 ### 2. Alternative frontend (`/api/alt`)
 
-Cleans the URL and returns a verified alternative privacy frontend if available.
+Cleans the URL and returns a verified alternative frontend if one is reachable.
 
 ```bash
 curl -X POST http://localhost:3000/api/alt \
@@ -268,7 +268,7 @@ curl -X POST http://localhost:3000/api/alt \
 
 ### 3. Links cleaned stats (`/api/stats`)
 
-Returns the count of sanitized links recorded by the SQLite backend.
+Returns the number of cleaned links recorded by the SQLite backend.
 
 ```bash
 curl http://localhost:3000/api/stats
@@ -282,47 +282,51 @@ curl http://localhost:3000/api/stats
 
 ---
 
-## Coding standards & conventions
+## Code conventions
 
 ### Frontend (Next.js / React)
-- **Client Components:** Mark interactive stateful UI with `"use client"` at the top (`url-processor.tsx`, `history-view.tsx`, `toast.tsx`).
-- **In-Flight Request Deduplication:** Use `withInflight(key, factory)` in `lib/api-client.ts` to prevent concurrent duplicate requests for the same URL.
-- **History Encapsulation:** All browser storage access routes through `lib/history.ts` (`appendHistory`, `readHistory`, `clearHistory`). Components never touch `localStorage` directly.
-- **Error Handling:** Gracefully catch alternative frontend errors so main URL cleaning always succeeds.
+
+- Interactive UI files start with `"use client"` (`url-processor.tsx`, `history-view.tsx`, `toast.tsx`).
+- Wrap fetches in `withInflight(key, factory)` from `lib/api-client.ts` so concurrent requests for the same URL collapse into one.
+- Read and write browser storage through `lib/history.ts` (`appendHistory`, `readHistory`, `clearHistory`). Components never touch `localStorage` directly.
+- Catch alternative-frontend errors so URL cleaning still succeeds.
 
 ### Backend (FastAPI / Python)
-- **Strictly Asynchronous:** All route handlers and engine modules are `async def`. Blocking operations use `asyncio.to_thread`.
-- **Shared HTTP Client:** Use the singleton `get_http_client()` from `backend/app/lib/http_client.py` managed by FastAPI lifespan. Never instantiate ad-hoc clients per request.
-- **Input Validation:** Enforce `validate_url` (HTTP/HTTPS, max 8192 characters, valid hostname) on all endpoints before processing.
-- **Persistence:** SQLite counter persistence (`stats.py`) uses WAL mode, a 5000ms busy timeout, and `BEGIN IMMEDIATE` transactions.
+
+- Route handlers and engine modules are all `async def`. Blocking calls go through `asyncio.to_thread`.
+- Get the shared client from `get_http_client()` in `backend/app/lib/http_client.py`. Do not create clients per request.
+- Run `validate_url` (HTTP/HTTPS, max 8192 characters, valid hostname) before processing any endpoint.
+- Stats persistence uses WAL mode, a 5000ms busy timeout, and `BEGIN IMMEDIATE` transactions.
 
 ---
 
 ## Testing
 
-### Frontend test suite (Vitest)
+### Frontend (Vitest)
+
 ```bash
-bun run test          # Run Vitest test suite (37 tests)
-bun run lint          # Run ESLint (ESLint 9 flat config)
+bun run test          # Vitest suite (37 tests)
+bun run lint          # ESLint 9 flat config
 bunx tsc --noEmit     # Typecheck TypeScript
 ```
 
-### Backend test suite (Pytest)
+### Backend (Pytest)
+
 ```bash
 cd backend
-uv run pytest         # Run Pytest suite (76 tests)
-uv run ruff check .   # Run Ruff linter
-uv run ruff format .  # Run Ruff code formatter
+uv run pytest         # Pytest suite (76 tests)
+uv run ruff check .   # Ruff linter
+uv run ruff format .  # Ruff formatter
 ```
 
 ---
 
-## Development workflow & CI/CD
+## CI/CD
 
-- **Branching Strategy:** Direct development on `main` with feature branches for larger additions.
-- **Automated Pipeline (`.github/workflows/ci.yml`):**
-  - **Pull Requests:** Runs backend tests (`pytest`, `ruff`), frontend checks (`vitest`, `eslint`, `tsc`), and a dry-run Docker build check.
-  - **Pushes to `main`:** Runs tests, builds and tags multi-stage Docker images with the commit SHA, pushes to GitHub Container Registry (GHCR), authenticates via Tailscale Workload Identity Federation (WIF), and triggers automated deployment on Coolify.
+Work lands directly on `main`; larger features get a branch. `.github/workflows/ci.yml` does the rest:
+
+- On pull requests: backend tests (`pytest`, `ruff`), frontend checks (`vitest`, `eslint`, `tsc`), and a dry-run Docker build.
+- On pushes to `main`: the same tests, then CI builds multi-stage Docker images tagged with the commit SHA and pushes them to GHCR. It authenticates through Tailscale Workload Identity Federation and triggers a Coolify deployment.
 
 ---
 
@@ -330,24 +334,22 @@ uv run ruff format .  # Run Ruff code formatter
 
 | Variable | Scope | Description | Default |
 | :--- | :--- | :--- | :--- |
-| `SAFELINK_BACKEND_URL` | Frontend | Target URL for the FastAPI backend service | `http://localhost:8000` |
-| `NEXT_PUBLIC_WEBSITE_URL` | Frontend | Canonical site URL (used in API docs and metadata) | `http://localhost:3000` |
-| `API_KEYS` | Frontend | Comma-separated list of valid `x-api-key` headers for elevated rate limits | `None` |
-| `SAFELINK_STATS_DB` | Backend | Path to SQLite statistics database file | `backend/safelink_stats.sqlite3` |
+| `SAFELINK_BACKEND_URL` | Frontend | URL of the FastAPI backend service | `http://localhost:8000` |
+| `NEXT_PUBLIC_WEBSITE_URL` | Frontend | Canonical site URL, used in API docs and metadata | `http://localhost:3000` |
+| `API_KEYS` | Frontend | Comma-separated `x-api-key` values that get elevated rate limits | `None` |
+| `SAFELINK_STATS_DB` | Backend | Path to the SQLite statistics database | `backend/safelink_stats.sqlite3` |
 
 ---
 
 ## Contributing
 
-Contributions are welcome. Please follow these guidelines:
-
-1. Fork the repository and create a new feature branch.
-2. Ensure all frontend checks (`bun run test`, `bun run lint`, `bunx tsc --noEmit`) and backend checks (`uv run pytest`, `uv run ruff check .`) pass.
-3. Follow the established coding standards detailed in [AGENTS.md](AGENTS.md).
-4. Submit a Pull Request with a clear summary of your changes.
+1. Fork the repository and create a feature branch.
+2. Make sure the frontend checks (`bun run test`, `bun run lint`, `bunx tsc --noEmit`) and backend checks (`uv run pytest`, `uv run ruff check .`) pass.
+3. Follow the conventions in [AGENTS.md](AGENTS.md).
+4. Open a pull request with a clear summary.
 
 ---
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](LICENSE).
+GNU General Public License v3.0. See [LICENSE](LICENSE).
