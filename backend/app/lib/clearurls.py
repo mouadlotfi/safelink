@@ -176,6 +176,11 @@ INSTAGRAM_TRACKER_PARAM_PATTERNS = [
     ]
 ]
 
+# Share-attribution params X appends to share links (?a=...&s=20).
+TWITTER_TRACKER_PARAM_PATTERNS = [
+    re.compile(r"^[as]$", re.IGNORECASE),
+]
+
 
 
 
@@ -448,6 +453,9 @@ def _apply_fallback(url: str) -> str:
     is_booking = hostname == "booking.com" or hostname.endswith(".booking.com")
     is_airbnb = hostname.startswith("airbnb.") or ".airbnb." in hostname
     is_instagram = hostname == "instagram.com" or hostname.endswith(".instagram.com")
+    is_twitter = hostname in ("x.com", "twitter.com") or hostname.endswith(
+        (".x.com", ".twitter.com")
+    )
     cleaned_path = parsed.path
 
     if is_facebook and (story_match := FACEBOOK_STORY_TRACKER_PATH.match(parsed.path)):
@@ -485,6 +493,10 @@ def _apply_fallback(url: str) -> str:
             keys_to_delete.add(key)
         elif is_instagram and any(
             pattern.search(key) for pattern in INSTAGRAM_TRACKER_PARAM_PATTERNS
+        ):
+            keys_to_delete.add(key)
+        elif is_twitter and any(
+            pattern.search(key) for pattern in TWITTER_TRACKER_PARAM_PATTERNS
         ):
             keys_to_delete.add(key)
 

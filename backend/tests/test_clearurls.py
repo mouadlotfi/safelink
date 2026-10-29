@@ -176,6 +176,20 @@ def test_clean_url_removes_instagram_share_token():
     assert result == "https://www.instagram.com/p/DdUK3GPREfB/"
 
 
+def test_clean_url_removes_twitter_share_attribution_token():
+    ruleset = ClearUrlsRuleSet()
+    url = "https://x.com/someuser/status/1234567890?a=sample_share_token&s=20"
+    result = clean_url_with_rules(url, ruleset)
+    assert result == "https://x.com/someuser/status/1234567890"
+
+
+def test_clean_url_keeps_letter_a_param_on_other_hosts():
+    ruleset = ClearUrlsRuleSet()
+    url = "https://example.com/page?a=1&b=2"
+    result = clean_url_with_rules(url, ruleset)
+    assert result == "https://example.com/page?a=1&b=2"
+
+
 def test_clean_url_removes_spotify_tracking_params():
     ruleset = ClearUrlsRuleSet()
     url = "https://open.spotify.com/track/sample_track_id?pi=sample_pi&sci=spotify%3Acard-config%3Asample"
